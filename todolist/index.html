@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist\css\bootstrap.min.css">
+    <link rel="stylesheet" href="list.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="color: azure;">To-do list</h1>
+        <!--input-->
+        <div class="add-elements">
+            <input id="add" placeholder="Enter Your Work">
+            <button class="btn btn-success" id="btn" style="width: 20mm;" onclick="start()"><i class="fas fa-folder-plus"></i></button>
+            <button class="btn btn-danger" onclick="end()"
+            ><i class="fas fa-trash" style="width: 13mm;"></i></button>
+        </div>
+        <!--list of elements-->
+        <div id="element-list">
+            <br>
+            <ol id="list">
+
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        //welcome box
+        const input = document.querySelector("#add");
+        const btn = document.querySelector(".btn");
+        const list = document.querySelector("#list");
+        const el = document.getElementsByTagName('li');
+
+        // add elements when we click the button
+        function start() {
+
+            var txt = input.value;
+            if (txt == "") {
+                alert('Please Enter Your Work!...');
+            }
+            else {
+                li = document.createElement('li');
+                btnedit = document.createElement("button")
+                btndelete = document.createElement("button")
+                // btnedit.innerHTML = "\u{2702}"
+                btndelete.innerHTML = "\u{2702}"
+                li.innerHTML = txt;
+                input.value = '';
+                list.appendChild(li);
+                // li.append(btnedit)
+                li.append(btndelete)
+                // btnedit.style.backgroundColor="Green";
+                // btnedit.style.height="8mm";
+                // btnedit.style.color="white";
+                // btnedit.style.width="18mm"
+                btndelete.style.backgroundColor="brown";
+                btndelete.style.height="8mm";
+                btndelete.style.color="white";
+                btndelete.style.width="18mm"
+                btndelete.addEventListener("click",(li) => li.target.parentNode.remove()) 
+            }
+        }
+        // delete the given list
+        
+        function end() {
+            var txt = document.getElementById("list");
+            txt.remove();
+            window.location.reload();
+        }   
+    </script>
+</body>
+
+</html>
